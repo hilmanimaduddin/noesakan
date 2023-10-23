@@ -1,19 +1,10 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Image,
-  Input,
-  Text,
-} from "@chakra-ui/react";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import FilterCategory from "../features/filterCategory";
-import Search from "../features/search";
-import { PiFishFill } from "react-icons/pi";
-import { GiCirclingFish } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Box, Flex, Image, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { GiCirclingFish } from "react-icons/gi";
+import { PiFishFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import FilterCategory from "../features/filterCategory";
 import API from "../lib/api";
 
 const data = {

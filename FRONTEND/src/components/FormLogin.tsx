@@ -14,47 +14,44 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { useLogin } from "../features/auth/useLogin";
-import { useNavigate } from 'react-router-dom';
-import { AUTH_LOGIN } from "../types/rootreducer";
-import API, { setAuthToken } from "../lib/api";
-import { useDispatch, useSelector } from 'react-redux';
 import { ChangeEvent, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { IUserLogin } from "../interfaces/User";
+import API, { setAuthToken } from "../lib/api";
 import { RootState } from "../stores/slice/rootstate";
+import { AUTH_LOGIN } from "../types/rootreducer";
 
 export default function FormLogin() {
+  const auth = useSelector((state: RootState) => state.auth);
+  console.log("ini auth", auth);
+  const [form, setForm] = useState<IUserLogin>({
+    email: "",
+    password: "",
+  });
 
-  const auth = useSelector((state:RootState)=> state.auth)
-  console.log('ini auth',auth)
-  const [form,setForm] = useState<IUserLogin>({
-    email:"",
-    password:""
-  })
- 
- 
-  function handleChange(event:ChangeEvent<HTMLInputElement>){
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setForm({
-        ...form,
-        [event.target.name] : event.target.value
-       
-    })
-} console.log(form)
-async function handleLogin (){
-  try{
-    const response = await API.post("/auth/signin",form)
-    dispatch(AUTH_LOGIN(response.data))
-    // console.log("login berhasil",response)
-    localStorage.setItem("token" , response.data.token)
-    setAuthToken(localStorage.token);
-    navigate('/')
-    console.log('response data',response.data)
-  } catch (err){
-    console.log("ini error ",err)
+      ...form,
+      [event.target.name]: event.target.value,
+    });
   }
-}
-const navigate = useNavigate()
-const dispatch = useDispatch()
+  console.log(form);
+  async function handleLogin() {
+    try {
+      const response = await API.post("/auth/signin", form);
+      dispatch(AUTH_LOGIN(response.data));
+      // console.log("login berhasil",response)
+      localStorage.setItem("token", response.data.token);
+      setAuthToken(localStorage.token);
+      navigate("/");
+      console.log("response data", response.data);
+    } catch (err) {
+      console.log("ini error ", err);
+    }
+  }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const { handleChange, handleLogin } = useLogin();
   // const user = useSelector((state: RootState) => state.user);
   return (

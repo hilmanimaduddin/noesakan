@@ -1,8 +1,8 @@
-import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import API from "../lib/api";
 import UseProductCreate from "../features/Product/useProductCreate";
+import API from "../lib/api";
 
 const data = {
   isNew: true,
@@ -50,7 +50,7 @@ export function Rating({ rating, numReviews }: RatingProps) {
 export default function StoreProductInStore() {
   const [product, setProduct] = useState<any>([]);
 
-  const { handleCreateProduct, handleSubmit, coba } = UseProductCreate();
+  const { coba } = UseProductCreate();
 
   async function fetchData() {
     const token = localStorage.getItem("token");

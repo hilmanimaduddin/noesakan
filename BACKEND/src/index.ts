@@ -1,4 +1,4 @@
-import * as express from "express";
+import express = require("express");
 import { Request, Response } from "express-serve-static-core";
 import { AppDataSource } from "./data-source";
 import router from "./route";

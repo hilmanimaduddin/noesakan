@@ -1,0 +1,62 @@
+/* navbar.css */
+
+/* Navbar saat belum di-scroll */
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: transparent;
+  color: white;
+  min-height: 60px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 25px;
+  padding-right: 25px;
+  align-items: center;
+  transition: background-color 0.3s ease; /* Efek transisi warna latar belakang */
+}
+
+/* Navbar saat di-scroll */
+.scrolled-navbar {
+  background-color: rgba(0, 0, 0, 0.3); /* Latar belakang semi-transparan */
+  backdrop-filter: blur(10px); /* Efek blur latar belakang */
+  color: white;
+  min-height: 60px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 25px;
+  padding-right: 25px;
+  align-items: center;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease; /* Efek transisi warna latar belakang dan efek blur */
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spin-animation {
+  animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
+}
+
+.typing-animation-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.typing-animation-char {
+  display: inline;
+  opacity: 0;
+  animation: typing-animation 4s ease-in-out infinite;
+}
+
+@keyframes typing-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
